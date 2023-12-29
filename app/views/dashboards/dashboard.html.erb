@@ -1,0 +1,34 @@
+<h1>Welcome to Your Dashboard, <%= current_user.name %>!</h1>
+<!-- Access the dashboard_data variable -->
+<!-- Accessing the dashboard_data -->
+<% if @dashboard_data.present? %>
+  <p>Dashboard Data: <%= @dashboard_data %></p>
+<% else %>
+  <%= @user.name %>
+  <p>No dashboard data available.</p>
+<% end %>
+
+<% if @users.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <!-- Add more columns as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <!-- Add more columns as needed -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No users found.</p>
+<% end %>
