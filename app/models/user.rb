@@ -5,8 +5,8 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable, :lockable
   attr_accessor :name
 
-  has_many :services, foreign_key: :seller_id
-  has_many :bookings, foreign_key: :customer_id
+  has_many :services, dependent: :destroy
+  has_many :bookings,   dependent: :destroy
 
   enum role: { seller: 0, customer: 1 }
   enum gender: { male: 0, female: 1, other: 2 }

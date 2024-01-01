@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_27_141020) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_01_135741) do
   create_table "bookings", force: :cascade do |t|
     t.string "start_date"
     t.string "end_date"
     t.integer "status"
-    t.integer "customer_id", null: false
+    t.integer "user_id", null: false
     t.integer "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["service_id"], name: "index_bookings_on_service_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -39,10 +39,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_27_141020) do
     t.text "description"
     t.integer "status"
     t.float "average_rating"
-    t.integer "seller_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["seller_id"], name: "index_services_on_seller_id"
+    t.float "price"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,9 +70,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_27_141020) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "services"
+  add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "customers"
   add_foreign_key "reviews", "services"
-  add_foreign_key "services", "sellers"
+  add_foreign_key "services", "users"
 end

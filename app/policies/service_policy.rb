@@ -9,4 +9,9 @@ class ServicePolicy
   def create?
     user.seller?
   end
+
+  def new?
+    user.seller?
+  end
+
 end
