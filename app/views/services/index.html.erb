@@ -1,0 +1,27 @@
+<div class="container mx-auto mt-8">
+  <%= link_to "Add new service", new_service_path, class: "text-4xl font-bold mb-8 text-center text-gray-800" %>
+
+  <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">All Services</h1>
+
+  <div class="overflow-x-auto mx-auto">
+    <table class="min-w-full bg-white border border-gray-300 rounded-md">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="py-2 px-4 border-b">Service Name</th>
+          <th class="py-2 px-4 border-b">Description</th>
+          <th class="py-2 px-4 border-b">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+            <tr class="hover:bg-gray-100 transition duration-300 ease-in-out">
+              <td class="py-2 px-4 border-b"><%= service.name %></td>
+              <td class="py-2 px-4 border-b"><%= service.description %></td>
+              <td class="py-2 px-4 border-b"><%= service.price %></td>
+              <td class="py-2 px-4 border-b"><%= link_to "Show detail" ,service_path(service) %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

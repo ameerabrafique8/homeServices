@@ -1,5 +1,5 @@
 class Service < ApplicationRecord
-  belongs_to :seller, class_name: 'User'
+  belongs_to :seller, foreign_key: "user_id", class_name: "User"
   has_many :bookings
 
   validates :name, :description, presence: true

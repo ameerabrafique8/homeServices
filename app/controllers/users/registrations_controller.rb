@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create
+  # def create
     def create
     @user = User.new(user_params)
 
@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new
     end
   end
-  end
+  # end
 
   def destroy
     # Sign out the current user
